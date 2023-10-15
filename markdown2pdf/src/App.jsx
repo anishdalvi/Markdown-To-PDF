@@ -5,30 +5,24 @@ function App() {
   const [markdown, setMarkdown] = useState('');
   const [pdfUrl, setPdfUrl] = useState('');
 
-  // Use useEffect to monitor pdfUrl changes
-  useEffect(() => {
-    // Check if pdfUrl is not empty before using it
-    if (pdfUrl) {
-      // You can set the PDF source in an iframe or use it in another way
-      // This example uses an iframe for PDF display
-      const iframe = document.getElementById('pdfViewer');
-      iframe.src = pdfUrl;
-    }
-  }, [pdfUrl]);
-
   const convertToPdf = async () => {
     try {
-      const response = await axios.post('api/convert', { markdown });
+      const response = await axios.post('api/convert', { markdown },
+        {
+          headers: { 'Content-Type': 'application/json' },
+          responseType: 'blob'
+        });
       //console.log(response);
       // Create a Blob from the received data
       const blob = new Blob([response.data], { type: 'application/pdf' });
       // Create a URL for the Blob
+      //console.log(blob);
       const url = URL.createObjectURL(blob);
-      //console.log(url);
+      
       // Set the URL in the state
       setPdfUrl(url);
-      //console.log(pdfUrl);
-      console.log(response.headers['content-type']);
+      //console.log(url);
+
     } catch (error) {
       console.error('PDF conversion error:', error);
     }
@@ -43,7 +37,8 @@ function App() {
         onChange={(e) => setMarkdown(e.target.value)}
       />
       <button onClick={convertToPdf}>Convert to PDF</button>
-      {/* {pdfUrl && <a href={pdfUrl} download="converted.pdf">Download PDF</a>} */}
+      {pdfUrl && <a href={pdfUrl} download="converted.pdf">Download PDF</a>} 
+
       { pdfUrl && (
         <iframe
           id="pdfViewer"

@@ -1,7 +1,7 @@
 // Backend: server.js
 const express = require("express");
 const bodyParser = require("body-parser");
-const {mdToPdf} = require("md-to-pdf");
+const { mdToPdf } = require("md-to-pdf");
 
 const app = express();
 const port = 5000;
@@ -14,17 +14,13 @@ app.post("/api/convert", async (req, res) => {
   try {
       const pdf = await mdToPdf(
         { content: markdown },
-        //{ dest: "output.pdf" }
+        //{ dest: "output2.pdf" }
       ).catch(console.error);
-      /* const pdf = await mdToPdf({
-        path: "markdown.md",
-      }).catch(console.error); */
-
 
       if (pdf) {
           pdf.filename = "converted.pdf";
           res.set("Content-Type", "application/pdf");
-          res.set("Content-Disposition", `attachment; filename="${pdf.filename}"`);
+          res.set("content-Disposition", `attachment; filename="${pdf.filename}"`);
           res.send(pdf.content);
           //console.log(pdf);
     } else {
