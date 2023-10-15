@@ -8,15 +8,15 @@ function App() {
   const convertToPdf = async () => {
     try {
       const response = await axios.post('api/convert', { markdown });
-
-      console.log(response.data);
+      //console.log(response);
       // Create a Blob from the received data
-      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const blob = new Blob([response.data], { type: 'application/octetstream' });
       // Create a URL for the Blob
-      const url = URL.createObjectURL(blob);
-
+      const url = window.URL.createObjectURL(blob);
+      //console.log(url);
       // Set the URL in the state
       setPdfUrl(url);
+      //console.log(pdfUrl);
     } catch (error) {
       console.error('PDF conversion error:', error);
     }
