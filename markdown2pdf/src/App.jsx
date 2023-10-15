@@ -1,4 +1,3 @@
-// Frontend: src/App.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -8,10 +7,16 @@ function App() {
 
   const convertToPdf = async () => {
     try {
-      const response = await axios.post('/api/convert', { markdown });
-      console.log(response);
-      setPdfUrl(response.data.pdfUrl);
-      console.log(response.data.pdfUrl);
+      const response = await axios.post('api/convert', { markdown });
+
+      // Create a Blob from the received data
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+
+      // Create a URL for the Blob
+      const url = URL.createObjectURL(blob);
+
+      // Set the URL in the state
+      setPdfUrl(url);
     } catch (error) {
       console.error('PDF conversion error:', error);
     }
@@ -26,7 +31,7 @@ function App() {
         onChange={(e) => setMarkdown(e.target.value)}
       />
       <button onClick={convertToPdf}>Convert to PDF</button>
-      {pdfUrl && <a href={pdfUrl} target="_blank" rel="noreferrer">Download PDF</a>}
+      {pdfUrl && <a href={pdfUrl} download="converted.pdf">Download PDF</a>}
     </div>
   );
 }
