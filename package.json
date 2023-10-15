@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server",
-    "convert": "node backend/convert",
     "server": "nodemon backend/server",
     "client": "npm run client --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
