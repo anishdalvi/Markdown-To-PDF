@@ -9,9 +9,9 @@ function App() {
     try {
       const response = await axios.post('api/convert', { markdown });
 
+      console.log(response.data);
       // Create a Blob from the received data
       const blob = new Blob([response.data], { type: 'application/pdf' });
-
       // Create a URL for the Blob
       const url = URL.createObjectURL(blob);
 

@@ -12,13 +12,17 @@ app.post("/api/convert", async (req, res) => {
   const { markdown } = req.body;
 
   try {
-      const pdf = await mdToPdf({ content: markdown }).catch(console.error);
+      const pdf = await mdToPdf(
+        { content: markdown },
+        //{ dest: "output.pdf" }
+      ).catch(console.error);
       /* const pdf = await mdToPdf({
         path: "markdown.md",
       }).catch(console.error); */
 
 
-    if (pdf) {
+      if (pdf) {
+      //console.log(pdf);
       pdf.filename = "converted.pdf";
       res.set("Content-Type", "application/pdf");
       res.set("Content-Disposition", `attachment; filename="${pdf.filename}"`);
