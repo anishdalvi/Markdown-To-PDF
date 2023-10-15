@@ -26,7 +26,7 @@ app.post("/api/convert", async (req, res) => {
           res.set("Content-Type", "application/pdf");
           res.set("Content-Disposition", `attachment; filename="${pdf.filename}"`);
           res.send(pdf.content);
-          console.log(pdf);
+          //console.log(pdf);
     } else {
       res.status(500).send("PDF conversion error.");
     }
