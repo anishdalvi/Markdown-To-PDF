@@ -8,11 +8,11 @@
     "start": "node backend/server",
     "convert": "node backend/convert",
     "server": "nodemon backend/server",
-    "client": "npm run client --prefix markdown2pdf",
+    "client": "npm run client --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
-  "author": "",
+  "author": "Anish",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",

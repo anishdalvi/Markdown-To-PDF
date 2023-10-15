@@ -1,0 +1,47 @@
+#root {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 2rem;
+ 
+}
+
+.header{
+  text-align: center;
+
+}
+
+.header h1 {
+  font-size: 2.5em;
+  line-height: 1.1;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.up{
+  width:100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.down{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.editor{
+  width: 50%;
+  height: 500px;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:20px;
+}
+
+
