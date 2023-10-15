@@ -48,13 +48,8 @@ button {
 
 button:hover {
   /* border-color: #646cff; */
-  border-color: #646cff;
+  border-color: #e9e8e8;
   background-color: #242424;
-  color: #646cff;
+  color: #e9e8e8;
 }
 
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
- */

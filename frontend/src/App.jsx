@@ -8,7 +8,7 @@ function App() {
   const fileInputRef = useRef(null);
 
   useEffect(() => {
-    // Check if pdfUrl is not empty before using it
+    
     if (pdfUrl) {
       const iframe = document.getElementById('pdfViewer');
       iframe.src = pdfUrl;
